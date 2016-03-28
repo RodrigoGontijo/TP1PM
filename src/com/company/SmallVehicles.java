@@ -1,39 +1,74 @@
 package com.company;
 
-import Interface.ParkInterface;
+import Interface.ParkSpaceInterface;
 
 import java.util.Date;
 
 
-public class SmallVehicles implements ParkInterface{
+public class SmallVehicles implements ParkSpaceInterface {
+
+    private Date exitTime;
+    private Date entryTime;
+    private Boolean isOccupied;
+    private String level;
+    private int numberPark;
+
+    public SmallVehicles(Boolean isOccupied, String level, int numberPark) {
+        this.numberPark = numberPark;
+        this.isOccupied = isOccupied;
+        this.level = level;
+    }
 
 
     @Override
-    public int valuePerHour() {
-        return 0;
+    public double valuePerHour() {
+        return Constants.SMALLVEHICLESPRICE;
     }
 
     @Override
     public int capacity() {
-        return 0;
+        return Constants.SMALLVEHICLESCAPACITY;
     }
 
     @Override
-    public int placesOccupied() {
-        return 0;
+    public boolean isOccupied() {
+        return isOccupied;
     }
 
     @Override
-    public void setPlacesOccupied(int numberPlaces) {
+    public void setIsOccupied(Boolean isOccupied) {
+        this.isOccupied = isOccupied;
     }
 
     @Override
-    public Date entryTime() {
-        return null;
+    public Date getEntryTime() {
+        return entryTime;
     }
 
     @Override
-    public Date exitTime() {
-        return null;
+    public Date getExitTime() {
+        return exitTime;
     }
+
+
+    @Override
+    public void setExitTime(Date exitTime) {
+        this.exitTime = exitTime;
+    }
+
+    @Override
+    public String getLevel() {
+        return this.level;
+    }
+
+    @Override
+    public String getCode() {
+        return level.concat(Constants.SMALLVEHICLESCODE.concat(Integer.toString(numberPark)));
+    }
+
+    @Override
+    public void setEntryTime(Date date) {
+        this.entryTime = date;
+    }
+
 }

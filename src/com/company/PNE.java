@@ -1,37 +1,74 @@
 package com.company;
 
-import Interface.ParkInterface;
+import Interface.ParkSpaceInterface;
 
 import java.util.Date;
 
-/**
- * Created by rodri on 26/03/2016.
- */
-public class PNE implements ParkInterface {
+
+public class PNE implements ParkSpaceInterface {
+
+    private Date exitTime;
+    private Date entryTime;
+    private Boolean isOccupied;
+    private String level;
+    private int numberPark;
+
+    public PNE( Boolean isOccupied, String level, int numberPark) {
+        this.numberPark = numberPark;
+        this.isOccupied = isOccupied;
+        this.level = level;
+    }
 
 
     @Override
-    public int valuePerHour() {
-        return 0;
+    public double valuePerHour() {
+        return Constants.PNEVEHICLESPRICE;
     }
 
     @Override
     public int capacity() {
-        return 0;
+        return Constants.PNEVEHICLESCAPACITY;
     }
 
     @Override
-    public int placesOccupied() {
-        return 0;
+    public boolean isOccupied() {
+        return isOccupied;
     }
 
     @Override
-    public Date entryTime() {
-        return null;
+    public void setIsOccupied(Boolean isOccupied) {
+        this.isOccupied = isOccupied;
     }
 
     @Override
-    public Date exitTime() {
-        return null;
+    public Date getEntryTime() {
+        return entryTime;
     }
+
+    @Override
+    public Date getExitTime() {
+        return exitTime;
+    }
+
+
+    @Override
+    public void setExitTime(Date exitTime) {
+        this.exitTime = exitTime;
+    }
+
+    @Override
+    public String getLevel() {
+        return level;
+    }
+
+    @Override
+    public String getCode() {
+        return level.concat(Constants.PNEVEHICLESCODE.concat(Integer.toString(numberPark)));
+    }
+
+    @Override
+    public void setEntryTime(Date date) {
+        this.entryTime = date;
+    }
+
 }
