@@ -2,20 +2,22 @@ package com.company;
 
 import Interface.ParkSpaceInterface;
 
+import java.util.Calendar;
 import java.util.Date;
 
 
 public class SmallVehicles implements ParkSpaceInterface {
 
-    private Date exitTime;
-    private Date entryTime;
+    private Calendar exitTime;
+    private Calendar entryTime;
     private Boolean isOccupied;
     private String level;
+    private String plateNumber;
     private int numberPark;
 
-    public SmallVehicles(Boolean isOccupied, String level, int numberPark) {
+    public SmallVehicles(String level, int numberPark) {
         this.numberPark = numberPark;
-        this.isOccupied = isOccupied;
+        this.isOccupied = false;
         this.level = level;
     }
 
@@ -26,33 +28,32 @@ public class SmallVehicles implements ParkSpaceInterface {
     }
 
     @Override
-    public int capacity() {
-        return Constants.SMALLVEHICLESCAPACITY;
-    }
-
-    @Override
     public boolean isOccupied() {
         return isOccupied;
     }
 
     @Override
-    public void setIsOccupied(Boolean isOccupied) {
+    public void setIsOccupied(Boolean isOccupied, String plate) {
         this.isOccupied = isOccupied;
+        this.plateNumber = plate;
     }
 
     @Override
-    public Date getEntryTime() {
+    public String getPlateNumber() { return plateNumber; }
+
+    @Override
+    public Calendar getEntryTime() {
         return entryTime;
     }
 
     @Override
-    public Date getExitTime() {
+    public Calendar getExitTime() {
         return exitTime;
     }
 
 
     @Override
-    public void setExitTime(Date exitTime) {
+    public void setExitTime(Calendar exitTime) {
         this.exitTime = exitTime;
     }
 
@@ -67,7 +68,7 @@ public class SmallVehicles implements ParkSpaceInterface {
     }
 
     @Override
-    public void setEntryTime(Date date) {
+    public void setEntryTime(Calendar date) {
         this.entryTime = date;
     }
 

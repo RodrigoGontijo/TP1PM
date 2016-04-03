@@ -2,32 +2,33 @@ package com.company;
 
 import Interface.ParkSpaceInterface;
 
+import java.util.Calendar;
 import java.util.Date;
 
 
 public class BigVehicles implements ParkSpaceInterface {
 
-    private Date exitTime;
-    private Date entryTime;
+    private Calendar exitTime;
+    private Calendar entryTime;
     private Boolean isOccupied;
     private String level;
+    private String plateNumber;
     private int numberPark;
 
-    public BigVehicles(Boolean isOccupied, String level, int numberPark) {
+    public BigVehicles(String level, int numberPark) {
         this.numberPark = numberPark;
-        this.isOccupied = isOccupied;
         this.level = level;
+        this.isOccupied = false;
     }
 
+    @Override
+    public String getPlateNumber(){
+        return this.plateNumber;
+    }
 
     @Override
     public double valuePerHour() {
         return Constants.BIGVEHICLESPRICE;
-    }
-
-    @Override
-    public int capacity() {
-        return Constants.BIGVEHICLESCAPACITY;
     }
 
     @Override
@@ -36,29 +37,30 @@ public class BigVehicles implements ParkSpaceInterface {
     }
 
     @Override
-    public void setIsOccupied(Boolean isOccupied) {
+    public void setIsOccupied(Boolean isOccupied, String plate) {
         this.isOccupied = isOccupied;
+        this.plateNumber = plate;
     }
 
     @Override
-    public Date getEntryTime() {
+    public Calendar getEntryTime() {
         return entryTime;
     }
 
     @Override
-    public Date getExitTime() {
+    public Calendar getExitTime() {
         return exitTime;
     }
 
 
     @Override
-    public void setExitTime(Date exitTime) {
+    public void setExitTime(Calendar exitTime) {
         this.exitTime = exitTime;
     }
 
     @Override
     public String getLevel() {
-        return this.level;
+        return level;
     }
 
     @Override
@@ -67,7 +69,7 @@ public class BigVehicles implements ParkSpaceInterface {
     }
 
     @Override
-    public void setEntryTime(Date date) {
+    public void setEntryTime(Calendar date) {
         this.entryTime = date;
     }
 

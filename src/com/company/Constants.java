@@ -2,7 +2,6 @@ package com.company;
 
 public final class Constants {
 
-
     //Prices
     static final double SMALLVEHICLESPRICE = 6;
     static final double BIGVEHICLESPRICE = 8;
@@ -21,13 +20,7 @@ public final class Constants {
     static final String PNEVEHICLESCODE = "NE";
     static final String MOTORBIKEVEHICLESCODE = "MT";
 
-    //LevelCode
-    static final String LEVEL1CODE = "N1";
-    static final String LEVEL2CODE = "N2";
-    static final String LEVEL3CODE = "N3";
-    static final String LEVEL4CODE = "N4";
-
     //QuantityLevel
-    static final int LEVELQUANTITY = 4;
+    static final int FLOORQUANTITY = 4;
 
 }
