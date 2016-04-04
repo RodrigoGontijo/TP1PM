@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+
+        //Auxiliary variables
         int i;
         String outputLine = null;
         String inputName = args[0];
@@ -14,6 +16,12 @@ public class Main {
         BigVehicles bigVehicle_aux;
         SmallVehicles smallVehicle_aux;
         Motorbikes motorbike_aux;
+        String[] parts;
+        String action;
+        int lineHours;
+        int lineMinutes;
+        String plate;
+        String vehicleType;
 
         //Setup
         ArrayList<ParkingFloor> parkingLot = new ArrayList<ParkingFloor>();
@@ -34,14 +42,15 @@ public class Main {
             while((line = bufferedReader.readLine()) != null) {
 
                 //Split line for informations
-                String[] parts = line.split(";|:");
-                String action = parts[0];
-                int lineHours = Integer.parseInt(parts[1]);
-                int lineMinutes = Integer.parseInt(parts[2]);
-                String plate = parts[3];
-                String vehicleType = parts[4];
+                parts = line.split(";|:");
+                action = parts[0];
+                lineHours = Integer.parseInt(parts[1]);
+                lineMinutes = Integer.parseInt(parts[2]);
+                plate = parts[3];
+                vehicleType = parts[4];
 
                 //Condition for entering vehicles
+                outputLine = "LOTADO\n";
                 if (action.equals("E"))
                 {
                     //Search spots for especified vehicle type
